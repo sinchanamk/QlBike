@@ -103,108 +103,110 @@ class _UpcomingRideState extends State<UpcomingRide> {
             ),
             height: height / 3.14,
             width: double.infinity,
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(
-                    right: 158,
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(
+                      right: 158,
+                    ),
+                    child: Text(
+                      'My Upcoming Ride',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 19,
+                          color: ColorsConsts.blackColor),
+                    ),
                   ),
-                  child: Text(
-                    'My Upcoming Ride',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 19,
-                        color: ColorsConsts.blackColor),
-                  ),
-                ),
-                InkWell(
-                  onTap: () {},
-                  //  Navigator.push(
-                  //               context,
-                  //               MaterialPageRoute(
-                  //                   builder: (context) => MyRides()),
-                  //             );},
-                  child: Container(
-                    padding:
-                        const EdgeInsets.only(right: 10, top: 14, left: 10),
-                    child: SizedBox(
-                      height: 150,
-                      width: 550,
-                      child: Card(
-                        elevation: 20,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        color: Colors.white,
-                        child: Padding(
-                          padding: const EdgeInsets.all(18.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: ColorsConsts.primaryColor,
-                                    size: 14,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 8.0),
-                                    child: Text(
-                                      'Hebbal',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
+                  InkWell(
+                    onTap: () {},
+                    //  Navigator.push(
+                    //               context,
+                    //               MaterialPageRoute(
+                    //                   builder: (context) => MyRides()),
+                    //             );},
+                    child: Container(
+                      padding:
+                          const EdgeInsets.only(right: 10, top: 14, left: 10),
+                      child: SizedBox(
+                        height: 150,
+                        width: 550,
+                        child: Card(
+                          elevation: 7,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          color: Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: ColorsConsts.primaryColor,
+                                      size: 14,
                                     ),
-                                  )
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Icon(
-                                    Icons.circle,
-                                    color: Colors.lightGreen,
-                                    size: 14,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        left: 8.0, top: 8),
-                                    child: Text(
-                                      'Doddaballapur',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                        'Hebbal',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.circle,
+                                      color: Colors.lightGreen,
+                                      size: 14,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 170, top: 10),
-                                child: Text(
-                                  '31/02/2021',
-                                  style: TextStyle(
-                                    fontSize: 15,
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          left: 8.0, top: 8),
+                                      child: Text(
+                                        'Doddaballapur',
+                                        style: TextStyle(
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 170, top: 10),
+                                  child: Text(
+                                    '31/02/2021',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.only(right: 190, top: 5),
-                                child: Text(
-                                  '11.30 AM',
-                                  style: TextStyle(
-                                    fontSize: 13,
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.only(right: 190, top: 5),
+                                  child: Text(
+                                    '11.30 AM',
+                                    style: TextStyle(
+                                      fontSize: 13,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           )),
     ]));

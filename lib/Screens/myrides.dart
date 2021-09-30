@@ -91,7 +91,7 @@ class _MyRidesState extends State<MyRides> {
                                   MaterialPageRoute(
                                       builder: (context) => RideDetails()));
                     },
-                       child: Card( elevation: 20,
+                       child: Card( elevation: 7,
                          shape: RoundedRectangleBorder(
                        borderRadius: BorderRadius.circular(10.0),
                        

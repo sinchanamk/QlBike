@@ -9,21 +9,58 @@ class LandingPage extends StatefulWidget {
   _LandingPageState createState() => _LandingPageState();
 }
 
-class _LandingPageState extends State<LandingPage> {
-   
+class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation myAnimation; 
   double _width = 0.0;
   double _hight = 0.0;
-
   @override
   void didChangeDependencies() {
     _width = MediaQuery.of(context).size.width;
     _hight = MediaQuery.of(context).size.height;
     super.didChangeDependencies();
   }
+ @override
+  void initState() {
+    super.initState();
+    controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500)
+        );//..repeat(reverse:true);
+
+        
+    myAnimation =
+        Tween<double>(begin: 200, end: 100).animate(controller);
+    controller.forward().whenComplete(() {
+      controller.reverse();
+    });
+   
+  }
+ late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds:5),
+    vsync: this,
+  )..repeat(reverse:false);
+  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
+     begin: const Offset(-0.5, 0.0),
+        end: const Offset(0.5, 0.0),).animate(CurvedAnimation(
+    parent: _controller,
+    curve: Curves.linear,
+  ));
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+      return
+    AnimatedBuilder(
+      animation: myAnimation,
+      builder: (context, widget) {
+   
+     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -44,22 +81,25 @@ class _LandingPageState extends State<LandingPage> {
                     margin: EdgeInsets.only(left: 20, right: 20, top: 110),
                     height: _hight / 2,
                     width: _width,
+                    child:  SlideTransition(
+      position: _offsetAnimation,
+                   child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         image: DecorationImage(
-                            fit: BoxFit.fill,
+                            fit: BoxFit.cover,
                             image: AssetImage("assets/cover.jpg"))),
-                  ),
+                  ),)),
                   Container(
                     margin:
                         EdgeInsets.only(left: 10, right: 0, top: _hight / 1.5),
                     height: 60,
-                    width: _width / 2,
-                    decoration: BoxDecoration(
+                    width: myAnimation.value,//_width / 2,
+                   child:  Container( decoration: BoxDecoration(
                         image: DecorationImage(
                             fit: BoxFit.fill,
                             image: AssetImage("assets/name.png"))),
-                  ),
+                  )),
                   InkWell(
                     onTap: () {
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
@@ -89,5 +129,5 @@ class _LandingPageState extends State<LandingPage> {
         ),
       ),
     );
-  }
-}
+  });
+}}
